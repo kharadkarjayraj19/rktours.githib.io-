@@ -1,171 +1,400 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RK Tours & Travels - Aurangabad</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f5fbff;
-      color: #333;
-    }
-    header {
-      background: #0097d8;
-      color: white;
-      padding: 20px;
-      text-align: center;
-      font-size: 24px;
-      font-weight: bold;
-    }
-    .hero {
-      background: url('https://images.unsplash.com/photo-1502602898657-3e91760cbb34') center/cover;
-      height: 300px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      text-shadow: 0 2px 5px rgba(0,0,0,0.4);
-      font-size: 32px;
-      font-weight: bold;
-    }
-    section {
-      padding: 40px 20px;
-      max-width: 1100px;
-      margin: auto;
-    }
-    h2 {
-      color: #0077b6;
-      text-align: center;
-      margin-bottom: 25px;
-    }
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-    .card {
-      background: white;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    .card img {
-      width: 100%;
-      height: 160px;
-      object-fit: cover;
-    }
-    .card-content {
-      padding: 15px;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
-      background: #0097d8;
-      color: white;
-      margin-top: 40px;
-    }
-    .whatsapp {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #25D366;
-      color: white;
-      padding: 15px;
-      border-radius: 50%;
-      font-size: 24px;
-      text-decoration: none;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RK Tours & Travels - Chh. Sambhajinagar(Aurangabad)</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5fbff;
+            color: #333;
+        }
+
+        header {
+            background: #0097d8;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .hero {
+            background: url('https://images.unsplash.com/photo-1502602898657-3e91760cbb34') center/cover;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.4);
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        section {
+            padding: 40px 20px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        h2 {
+            color: #0077b6;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        /* carousel visuals */
+        .carousel {
+            position: relative;
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+            background: #eee;
+        }
+
+            .carousel img {
+                width: 100%;
+                height: 220px;
+                object-fit: cover;
+                display: block;
+                transition: opacity 400ms ease;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+
+        .card-content {
+            padding: 15px;
+        }
+
+        .tour-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-book {
+            background: #25D366;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* arrows */
+        .carousel .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.45);
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+            .carousel .arrow.left {
+                left: 10px;
+            }
+
+            .carousel .arrow.right {
+                right: 10px;
+            }
+
+        /* indicators (small dots) */
+        .indicators {
+            position: absolute;
+            bottom: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 6px;
+            z-index: 10;
+        }
+
+            .indicators button {
+                width: 9px;
+                height: 9px;
+                border-radius: 50%;
+                border: none;
+                background: rgba(255,255,255,0.6);
+                cursor: pointer;
+                padding: 0;
+            }
+
+                .indicators button.active {
+                    background: rgba(255,255,255,0.95);
+                }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #0097d8;
+            color: white;
+            margin-top: 40px;
+        }
+
+        .whatsapp {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25D366;
+            color: white;
+            padding: 15px;
+            border-radius: 50%;
+            font-size: 24px;
+            text-decoration: none;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+
+        /* responsive tweaks */
+        @media (max-width:600px) {
+            .carousel {
+                height: 160px;
+            }
+
+                .carousel img {
+                    height: 160px;
+                }
+        }
+    </style>
 </head>
 <body>
 
-<header>RK Tours & Travels</header>
+    <header>RK Tours & Travels</header>
 
-<div class="hero">Aurangabad Tour Specialist</div>
+    <div class="hero">Chh. Sambhajinagar(Aurangabad) Tour Specialist</div>
 
-<section>
-  <h2>Our Tours</h2>
-  <div class="cards">
+    <section>
+        <h2>Our Tours</h2>
+        <div class="cards">
 
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1587556930774-85e5ebfc607b" />
-      <div class="card-content">
-        <h3>1-Day Ajanta Ellora Caves Tour</h3>
-        <p>Explore two UNESCO World Heritage Sites in a single day.</p>
-      </div>
-    </div>
+            <!-- 1-Day Ajanta Ellora - carousel -->
+            <div class="card" id="card-aj1">
+                <div class="carousel" data-carousel-id="aj1">
+                    <!-- images: replace with your uploaded files in assets/ -->
+                    <img src="assets/Ajanta-Famous-painting.png" alt="Ajanta 1" data-index="0" style="opacity:1">
+                    <img src="assets/ellora.jpeg" alt="Ajanta 2" data-index="1" style="opacity:0">
+                    <img src="assets/ellora2.jpeg" alt="Ajanta 3" data-index="2" style="opacity:0">
 
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1583422409516-2895a0d89f1b" />
-      <div class="card-content">
-        <h3>2-Day Ajanta, Ellora & Bibi Ka Maqbara</h3>
-        <p>Complete heritage experience with historic sites and monuments.</p>
-      </div>
-    </div>
+                    <div class="arrow left" data-dir="prev">&#10094;</div>
+                    <div class="arrow right" data-dir="next">&#10095;</div>
 
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1589395595558-343fe8dbf9a4" />
-      <div class="card-content">
-        <h3>Aurangabad City Tour</h3>
-        <p>Local sightseeing, shopping, and must-visit attractions.</p>
-      </div>
-    </div>
+                    <div class="indicators">
+                        <button data-go="0" class="active"></button>
+                        <button data-go="1"></button>
+                        <button data-go="2"></button>
+                    </div>
+                </div>
 
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1508672019048-805c876b67e2" />
-      <div class="card-content">
-        <h3>Shirdi Darshan</h3>
-        <p>Comfortable trip to Shirdi Sai Baba Temple.</p>
-      </div>
-    </div>
+                <div class="card-content">
+                    <div class="tour-title">
+                        <h3>1-Day Ajanta Ellora Caves Tour</h3>
+                        <a class="btn-book" href="https://wa.me/918796634808?text=Hello%20RK%20Tours%2C%20I%20want%20to%20book%20the%201-Day%20Ajanta%20Ellora%20Tour">Book Now</a>
+                    </div>
+                    <p>Visit two of India's most iconic UNESCO World Heritage Sites in a single, well-planned day. Ajanta showcases ancient Buddhist cave paintings dating back to the 2nd century BCE, while Ellora features stunning Hindu, Buddhist, and Jain architecture carved into basalt cliffs. Perfect for travelers short on time but eager for heritage.</p>
+                </div>
+            </div>
 
-  </div>
-</section>
+            <!-- 2-Day Ajanta, Ellora & Bibi Ka Maqbara - carousel -->
+            <div class="card" id="card-aj2">
+                <div class="carousel" data-carousel-id="aj2">
+                    <img src="assets/Ajanta-Famous-painting.png" alt="Ellora 1" data-index="0" style="opacity:1">
+                    <img src="assets/Bibi-Ka-Maqbara.png" alt="Ellora 2" data-index="1" style="opacity:0">
+                    <img src="assets/ellora.jpeg" alt="Ellora 3" data-index="2" style="opacity:0">
 
-<section>
-  <h2>Vehicle Rentals</h2>
-  <div class="cards">
+                    <div class="arrow left" data-dir="prev">&#10094;</div>
+                    <div class="arrow right" data-dir="next">&#10095;</div>
 
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1617814065563-760a5d90f7bd" />
-      <div class="card-content">
-        <h3>Kia Carens</h3>
-        <p>Spacious and comfortable for long journeys.</p>
-      </div>
-    </div>
+                    <div class="indicators">
+                        <button data-go="0" class="active"></button>
+                        <button data-go="1"></button>
+                        <button data-go="2"></button>
+                    </div>
+                </div>
 
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1590362891991-f776e747a588" />
-      <div class="card-content">
-        <h3>Toyota Innova Crysta</h3>
-        <p>Premium travel experience for families and groups.</p>
-      </div>
-    </div>
+                <div class="card-content">
+                    <div class="tour-title">
+                        <h3>2-Day Ajanta, Ellora & Bibi Ka Maqbara</h3>
+                        <a class="btn-book" href="https://wa.me/918796634808?text=Hello%20RK%20Tours%2C%20I%20want%20to%20book%20the%202-Day%20Ajanta%2C%20Ellora%20%26%20Bibi%20Ka%20Maqbara%20Tour">Book Now</a>
+                    </div>
+                    <p>This 2-day tour covers the finest heritage attractions of Aurangabad. Day 1 includes Ajanta Caves, famous for their exquisite murals. Day 2 covers Ellora Caves, Kailasa Temple, and the Mughal-era Bibi Ka Maqbara. A relaxed, immersive experience for culture and history lovers.</p>
+                </div>
+            </div>
 
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1600369672781-0446cd1eaa39" />
-      <div class="card-content">
-        <h3>Swift Dzire</h3>
-        <p>Affordable and ideal for small groups & city trips.</p>
-      </div>
-    </div>
+            <!-- Aurangabad City Tour - carousel -->
+            <div class="card" id="card-city">
+                <div class="carousel" data-carousel-id="city">
+                    <img src="assets/Bibi-Ka-Maqbara.png" alt="City 1" data-index="0" style="opacity:1">
+                    <img src="assets/Himayat-Bagh.png" alt="City 2" data-index="1" style="opacity:0">
 
-  </div>
-</section>
+                    <div class="arrow left" data-dir="prev">&#10094;</div>
+                    <div class="arrow right" data-dir="next">&#10095;</div>
 
-<section>
-  <h2>Contact Us</h2>
-  <p style="text-align:center;">Fill in your contact details here later.</p>
-</section>
+                    <div class="indicators">
+                        <button data-go="0" class="active"></button>
+                        <button data-go="1"></button>
+                        <button data-go="2"></button>
+                    </div>
+                </div>
 
-<footer>
-  © 2025 RK Tours & Travels. All rights reserved.
-</footer>
+                <div class="card-content">
+                    <div class="tour-title">
+                        <h3>Aurangabad City Tour</h3>
+                        <a class="btn-book" href="https://wa.me/918796634808?text=Hello%20RK%20Tours%2C%20I%20want%20to%20book%20the%20Aurangabad%20City%20Tour">Book Now</a>
+                    </div>
+                    <p>Discover Aurangabad’s vibrant culture with visits to top landmarks like Bibi Ka Maqbara, Panchakki, markets for handloom shopping, and more. Ideal for travelers seeking a comfortable local experience.</p>
+                </div>
+            </div>
 
-<a class="whatsapp" href="#">💬</a>
+        </div>
+    </section>
+
+    <section>
+        <h2>Vehicle Rentals</h2>
+        <div class="cards">
+
+            <div class="card">
+                <img src="assets/Kia-Carens.png" alt="Kia Carens" style="width:100%;height:160px;object-fit:cover;" />
+                <div class="card-content">
+                    <h3>Kia Carens</h3>
+                    <p>Spacious and comfortable for long journeys.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="assets/Innova-Crysta.png" alt="Toyota Innova Crysta" style="width:100%;height:160px;object-fit:cover;" />
+                <div class="card-content">
+                    <h3>Toyota Innova Crysta</h3>
+                    <p>Premium travel experience for families and groups.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="assets/Swift-Dzire.png" alt="Swift Dzire" style="width:100%;height:160px;object-fit:cover;" />
+                <div class="card-content">
+                    <h3>Swift Dzire</h3>
+                    <p>Affordable and ideal for small groups & city trips.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section>
+        <h2>Contact Us</h2>
+        <p style="text-align:center;">Call/WhatsApp: +91-8796634808</p>
+    </section>
+
+    <footer>
+        © 2025 RK Tours & Travels. All rights reserved.
+    </footer>
+
+    <a class="whatsapp" href="https://wa.me/918796634808">💬</a>
+
+    <script>
+/*
+ Carousel system:
+ - Each carousel element has `data-carousel-id` attribute.
+ - Images inside have `data-index` attributes (0..n-1).
+ - Arrows have data-dir="prev" or "next".
+ - Indicators buttons have data-go index.
+ - Auto-advance every 2000ms (2 seconds).
+*/
+
+(function() {
+  const INTERVAL_MS = 2000;
+  const carousels = document.querySelectorAll('.carousel');
+
+  carousels.forEach(car => {
+    const id = car.dataset.carouselId;
+    const imgs = Array.from(car.querySelectorAll('img'));
+    const left = car.querySelector('.arrow.left');
+    const right = car.querySelector('.arrow.right');
+    const indicators = Array.from(car.querySelectorAll('.indicators button'));
+    let current = imgs.findIndex(i => i.style.opacity === '1' || i.style.opacity === '' );
+    if (current === -1) current = 0;
+    let timer;
+
+    function show(index) {
+      imgs.forEach(img => img.style.opacity = '0');
+      indicators.forEach(btn => btn.classList.remove('active'));
+      const toShow = imgs[index];
+      if (toShow) toShow.style.opacity = '1';
+      if (indicators[index]) indicators[index].classList.add('active');
+      current = index;
+    }
+
+    function next() {
+      let nxt = current + 1;
+      if (nxt >= imgs.length) nxt = 0;
+      show(nxt);
+    }
+    function prev() {
+      let p = current - 1;
+      if (p < 0) p = imgs.length - 1;
+      show(p);
+    }
+
+    // event listeners
+    if (right) right.addEventListener('click', () => {
+      next();
+      resetTimer();
+    });
+    if (left) left.addEventListener('click', () => {
+      prev();
+      resetTimer();
+    });
+
+    indicators.forEach((btn, idx) => {
+      btn.addEventListener('click', () => {
+        show(idx);
+        resetTimer();
+      });
+    });
+
+    function startTimer() {
+      timer = setInterval(() => {
+        next();
+      }, INTERVAL_MS);
+    }
+    function resetTimer() {
+      clearInterval(timer);
+      startTimer();
+    }
+
+    // initial show and start
+    show(current);
+    startTimer();
+
+    // pause on hover, resume on leave (optional UX)
+    car.addEventListener('mouseenter', () => clearInterval(timer));
+    car.addEventListener('mouseleave', () => { resetTimer(); });
+  });
+})();
+    </script>
 
 </body>
 </html>
